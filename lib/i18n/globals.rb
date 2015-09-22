@@ -13,7 +13,10 @@ module I18n
 
   class << self
     def translate(*args)
-      globals = config.original_config.globals
+      globals = config.globals
+      if config.respond_to?(:original_config)
+        globals.merge!(config.original_config.globals)
+      end
 
       if args.last.is_a?(Hash)
         args[-1] = globals.merge(args.last)
