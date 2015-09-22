@@ -22,6 +22,5 @@ module I18n
       end
       super(*args)
     end
-    alias :t :translate
   end
 end
